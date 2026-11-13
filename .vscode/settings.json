@@ -1,0 +1,11 @@
+{
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true
+  },
+  "files.associations": {
+    "*.env": "dotenv"
+  },
+  "python.analysis.extraPaths": ["${workspaceFolder}"],
+  "editor.formatOnSave": false
+}

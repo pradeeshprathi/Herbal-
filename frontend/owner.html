@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Owner dashboard — BUDDY herbal</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#123B2A" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%BF%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Outfit:wght@200..800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="owner-page">
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav is-stuck">
+    <a class="brand" href="index.html" aria-label="BUDDY herbal home">
+      <span class="brand__leaf" aria-hidden="true">
+        <svg viewBox="0 0 40 40"><path d="M20 3c8 6 12 12 12 19a12 12 0 0 1-24 0C8 15 12 9 20 3Z" fill="currentColor" opacity=".18"/><path d="M20 33V16M20 22c0-4 4-6 7-7M20 27c0-3-3-5-6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </span>
+      <span class="brand__text">BUDDY<em>herbal</em></span>
+    </a>
+    <div class="nav__actions">
+      <a class="btn btn--ghost" href="index.html" style="padding:10px 18px;font-size:.84rem"><span>View shop</span></a>
+      <button class="btn btn--dark" id="logoutBtn" hidden style="padding:10px 18px;font-size:.84rem"><span>Sign out</span></button>
+    </div>
+  </header>
+
+  <!-- ░░ sign in ░░ -->
+  <main class="owner-wrap" id="ownerLogin">
+    <section class="owner-login">
+      <p class="eyebrow"><span class="eyebrow__dot"></span> Owner access</p>
+      <h1>Your shop, <em>at a glance</em>.</h1>
+      <p class="owner-login__lead">
+        Every order placed on the website lands here with the customer's name, number, address,
+        items and the WhatsApp notification we sent you.
+      </p>
+
+      <form class="owner-login__form" id="loginForm">
+        <label class="field field--dark">
+          <span>Owner password</span>
+          <input type="password" id="ownerPassword" autocomplete="current-password" placeholder="••••••••" required />
+        </label>
+        <button class="btn btn--dark btn--block" type="submit" id="loginBtn">
+          <span>Sign in</span>
+        </button>
+        <p class="owner-hint" id="loginHint"></p>
+      </form>
+    </section>
+  </main>
+
+  <!-- ░░ dashboard ░░ -->
+  <main class="owner-wrap" id="ownerDash" hidden>
+    <div class="owner-head">
+      <div>
+        <p class="eyebrow" style="margin-bottom:8px"><span class="eyebrow__dot"></span> Owner dashboard</p>
+        <h1>Today at BUDDY <em>herbal</em></h1>
+        <p class="owner-head__meta">
+          <span class="live-badge"><i></i> Live</span>
+          <span id="ownerUpdated">updating…</span>
+          <span class="owner-head__mode" id="ownerMode"></span>
+        </p>
+      </div>
+      <div class="owner-head__actions">
+        <button class="btn btn--ghost" id="refreshBtn" style="padding:11px 18px;font-size:.84rem"><span>Refresh</span></button>
+      </div>
+    </div>
+
+    <div class="owner-alert" id="ownerAlert" hidden>
+      <strong>You are still using the default owner password.</strong>
+      <span>Open <code>.env</code> and change <code>OWNER_PASSWORD</code> before sharing the site.</span>
+    </div>
+
+    <div class="owner-stats" id="ownerStats"></div>
+
+    <div class="owner-grid">
+      <section class="owner-main">
+        <div class="owner-list-head">
+          <h2>Orders</h2>
+          <div class="owner-list-tools">
+            <label class="owner-search">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M16 16l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+              <input type="search" id="ownerSearch" placeholder="Find by code, phone or name" aria-label="Search every order by code, phone or customer name" autocomplete="off" />
+            </label>
+            <div class="owner-filters" id="ownerFilters">
+              <button class="filter is-active" data-filter="all">All</button>
+              <button class="filter" data-filter="progress">In progress</button>
+              <button class="filter" data-filter="delivered">Delivered</button>
+            </div>
+          </div>
+        </div>
+        <div id="ownerOrders" aria-live="polite"></div>
+      </section>
+
+      <aside class="owner-side">
+        <h2>Notifications sent to you</h2>
+        <p class="owner-side__lead">
+          Every new order pings your WhatsApp on <strong id="ownerNumber">89032 47497</strong>.
+          These are the alerts, newest first.
+        </p>
+        <div id="ownerNotes"></div>
+      </aside>
+    </div>
+  </main>
+
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+  <script type="module" src="js/owner.js"></script>
+</body>
+</html>
